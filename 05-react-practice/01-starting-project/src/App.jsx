@@ -13,6 +13,8 @@ function App() {
     duration: 0,
   });
 
+  const validInput = investments.duration >= 1
+
   function handleChange(investmentIdentifier, newValue) {
     setInvestments((prevInvestments) => {
       return {
@@ -27,7 +29,8 @@ function App() {
     <>
       <Header />
       <Input onChange={handleChange} investments={investments}/>
-      <Results investments={investments}/>
+      {!validInput && <p>Please add valid input</p>}
+      {validInput && <Results investments={investments}/>}
     </>
   )
 }
