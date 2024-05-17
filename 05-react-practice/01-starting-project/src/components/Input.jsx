@@ -1,4 +1,4 @@
-export default function Input({ onChange }) {
+export default function Input({investments ,onChange }) {
   return (
     <section id="user-input">
       <div className="input-group">
@@ -6,7 +6,7 @@ export default function Input({ onChange }) {
           <label htmlFor="initial-investment">Initial Investment</label>
           <input
             type="number"
-            // value={investments.initialInvestment}
+            value={investments.initialInvestment}
             onChange={(event) =>
               onChange("initialInvestment", event.target.value)
             }
@@ -17,7 +17,7 @@ export default function Input({ onChange }) {
           <label htmlFor="annual-investment">Annual Investment</label>
           <input
             type="number"
-            // value={investments.annualInvestment}
+            value={investments.annualInvestment}
             onChange={(event) =>
               onChange("annualInvestment", event.target.value)
             }
@@ -30,7 +30,7 @@ export default function Input({ onChange }) {
           <label htmlFor="expected-return">Expected Return</label>
           <input
             type="number"
-            // value={investments.expectedReturn}
+            value={investments.expectedReturn}
             onChange={(event) => onChange("expectedReturn", event.target.value)}
             required
           />
@@ -39,7 +39,7 @@ export default function Input({ onChange }) {
           <label htmlFor="initial-investment">Duration</label>
           <input
             type="number"
-            // value={investments.duration}
+            value={investments.duration}
             onChange={(event) => onChange("duration", event.target.value)}
             required
           />

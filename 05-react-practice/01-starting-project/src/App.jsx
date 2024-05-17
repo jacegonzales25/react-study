@@ -2,6 +2,7 @@ import { useState } from "react"
 
 import Header from "./components/Header"
 import Input from "./components/Input"
+import Results from "./components/Results";
 
 function App() {
 
@@ -16,17 +17,17 @@ function App() {
     setInvestments((prevInvestments) => {
       return {
         ...prevInvestments,
-        [investmentIdentifier]: newValue,
+        // the + value makes the string into a number
+        [investmentIdentifier]: +newValue,
       };
     });
   }
 
-
   return (
     <>
       <Header />
-      <Input onChange={handleChange}/>
-
+      <Input onChange={handleChange} investments={investments}/>
+      <Results investments={investments}/>
     </>
   )
 }
