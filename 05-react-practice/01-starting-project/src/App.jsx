@@ -29,7 +29,7 @@ function App() {
     <>
       <Header />
       <Input onChange={handleChange} investments={investments}/>
-      {!validInput && <p>Please add valid input</p>}
+      {!validInput && <p className="center">Please add valid input</p>}
       {validInput && <Results investments={investments}/>}
     </>
   )
