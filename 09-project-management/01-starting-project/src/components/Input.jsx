@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 
-const Input = forwardRef(function Input({ isTextArea, label, ...props },  ref) {
+const Input = forwardRef(function Input({ isTextArea, label, ...props }, ref) {
   const classes =
     "w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focus:outline-none focus:border-stone-600";
 
@@ -16,6 +16,6 @@ const Input = forwardRef(function Input({ isTextArea, label, ...props },  ref) {
       )}
     </p>
   );
-})
+});
 
 export default Input;
