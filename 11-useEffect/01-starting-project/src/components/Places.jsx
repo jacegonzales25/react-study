@@ -8,7 +8,11 @@ export default function Places({ title, places, fallbackText, onSelectPlace }) {
           {places.map((place) => (
             <li key={place.id} className="place-item">
               <button onClick={() => onSelectPlace(place.id)}>
-                <img src={place.image.src} alt={place.image.alt} />
+              {place.image ? (
+                  <img src={place.image.src} alt={place.image.alt} />
+                ) : (
+                  <div className="image-placeholder">No image available</div>
+                )}
                 <h3>{place.title}</h3>
               </button>
             </li>
