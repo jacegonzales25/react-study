@@ -10,7 +10,7 @@ function App() {
     <CartContextProvider>
       <Header
       />
-      <Shop>
+      <Shop>  
         {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id}>
             <Product {...product} />
