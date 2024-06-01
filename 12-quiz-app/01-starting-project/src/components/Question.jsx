@@ -13,7 +13,7 @@ export default function Question({
     isCorrect: null,
   });
 
-  function handleSelectAnswer() {
+  function handleSelectAnswer(answer) {
     setAnswer({
       selectedAnswer: answer,
       isCorrect: null,

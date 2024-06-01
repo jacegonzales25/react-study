@@ -13,24 +13,26 @@ export default function Answers({ answers, selectedAnswer, answerState, onSelect
     <ul id="answers">
       {shuffledAnswers.current.map((answer) => {
         const isSelected = selectedAnswer === answer;
-        let cssClasses = "";
+        let cssClass = '';
 
-        if (answerState === "answered" && isSelected) {
-          cssClasses = "selected";
+        if (answerState === 'answered' && isSelected) {
+          cssClass = 'selected';
         }
 
         if (
           (answerState === "correct" || answerState === "wrong") &&
           isSelected
         ) {
-          cssClasses = answerState;
+          cssClass = answerState;
         }
+        console.log(`Answer: ${answer}, Classes: ${cssClass}`);
+
 
         return (
           <li key={answer} className="answer">
             <button
               onClick={() => onSelect(answer)}
-              className={cssClasses}
+              className={cssClass}
               disabled={answerState !== ''}
             >
               {answer}
