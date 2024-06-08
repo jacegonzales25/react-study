@@ -72,7 +72,7 @@ function App() {
 
       setModalIsOpen(false);
     },
-    [setUserPlaces]
+    [userPlaces, setUserPlaces]
   );
 
   function handleError() {
