@@ -1,5 +1,5 @@
 import classes from './Auth.module.css';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { authActions } from '../store';
 
 const Auth = () => {
@@ -11,11 +11,9 @@ const Auth = () => {
     event.preventDefault();
     dispatch(authActions.login());
   }
-  const authTrue = useSelector((state) => state.auth.isAuthenticated)
 
   return (
-    <>
-      {!authTrue && (
+    
         <main className={classes.auth}>
           <section>
             <form onSubmit={handleLogin}>
@@ -31,8 +29,7 @@ const Auth = () => {
             </form>
           </section>
         </main>
-      )}
-    </>
+   
   );
 };
 
