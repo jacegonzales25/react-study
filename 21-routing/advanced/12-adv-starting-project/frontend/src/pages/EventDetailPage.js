@@ -4,5 +4,11 @@ import EventItem from "../components/EventItem";
 export default function EventDetailPage() {
   const params = useParams();
 
-  return <EventItem event={params.id}/>;
+  return (
+    <>
+      <h1>Event Detail Page</h1>
+      <p>{params.id}</p>
+      <EventItem event={params.id} />
+    </>
+  );
 }
