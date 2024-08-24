@@ -1,10 +1,12 @@
 // Added searchTerm parameters for dynamic url fetching
-export async function fetchEvents(searchTerm) {
+// Added signal object that is passed on by default by useQuery
+export async function fetchEvents({ signal, searchTerm }) {
   let url = "http://localhost:3000/events";
   if (searchTerm) {
     url += `?search=${searchTerm}`;
   }
-  const response = await fetch(url);
+  // Fetch accepts signal parameter for abort and etc
+  const response = await fetch(url, { signal: signal });
 
   if (!response.ok) {
     const error = new Error("An error occurred while fetching the events");
