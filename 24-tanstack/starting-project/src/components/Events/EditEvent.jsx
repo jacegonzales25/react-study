@@ -16,10 +16,28 @@ export default function EditEvent() {
     queryFn: (signal) => fetchEvent({ signal, id: params.id }),
   });
 
+  // Optimistic updating
   const { mutate } = useMutation({
     mutationFn: updateEvent,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["events"] });
+    // formData will be passed on the mutate, optimistic update
+    onMutate: async (data) => {
+      const newEvent = data.event;
+
+      await queryClient.cancelQueries({ queryKey: ["events", params.id] });
+
+      const previousEvent = queryClient.getQueryData(["events", params.id]);
+      queryClient.setQueryData(["events", params.id], newEvent);
+
+      return { previousEvent };
+    },
+
+    // Rolling back to previous event via context
+    onError: (error, data, context) => {
+      queryClient.setQueryData(["events", params.id], context.previousEvent);
+    },
+    // Invalidate the query after the mutation is done
+    onSettled: () => {
+      queryClient.invalidateQueries(["events", params.id]);
     },
   });
 
