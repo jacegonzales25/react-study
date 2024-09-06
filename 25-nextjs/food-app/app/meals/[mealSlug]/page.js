@@ -6,9 +6,8 @@ export default function MealDetails({ params }) {
   const meal = getMeal(params.mealSlug);
 
   if (!meal) {
-    notFound(); 
+    notFound();
   }
-
 
   meal.instructions = meal.instructions.replace(/\n/g, "<br />");
 

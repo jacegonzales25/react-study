@@ -15,7 +15,7 @@ const images = [
   { image: burgerImg, alt: 'A delicious, juicy burger' },
   { image: curryImg, alt: 'A delicious, spicy curry' },
   { image: dumplingsImg, alt: 'Steamed dumplings' },
-  { image: macncheeseImg, alt: 'Mac and cheese' },
+  { image: macncheeseImg, alt: 'Mac and cheese' },  
   { image: pizzaImg, alt: 'A delicious pizza' },
   { image: schnitzelImg, alt: 'A delicious schnitzel' },
   { image: tomatoSaladImg, alt: 'A delicious tomato salad' },
