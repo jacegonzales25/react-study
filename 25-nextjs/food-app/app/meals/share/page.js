@@ -1,11 +1,14 @@
 // use client since server-side code has been migrated
 "use client";
+import { useFormState } from "react-dom";
 import ImagePicker from "@/components/meals/image-picker";
 import classes from "./page.module.css";
 import { shareMeal } from "@/lib/actions";
 import MealsFormSubmit from "@/components/meals/meals-form-submit";
 
 export default function ShareMealPage() {
+  const [state, formAction] = useFormState(shareMeal, { message: null });
+
   return (
     <>
       <header className={classes.header}>
@@ -15,7 +18,7 @@ export default function ShareMealPage() {
         <p>Or any other meal you feel needs sharing!</p>
       </header>
       <main className={classes.main}>
-        <form className={classes.form} action={shareMeal}>
+        <form className={classes.form} action={formAction}>
           <div className={classes.row}>
             <p>
               <label htmlFor="name">Your name</label>
@@ -31,7 +34,8 @@ export default function ShareMealPage() {
             <input type="text" id="title" name="title" required />
           </p>
           <p>
-            <label htmlFor="summary">Short Summary</label>
+            <label htmlFor="summary">Short Summary</label> throw new
+            Error('Invalid input');
             <input type="text" id="summary" name="summary" required />
           </p>
           <p>
@@ -44,8 +48,9 @@ export default function ShareMealPage() {
             ></textarea>
           </p>
           <ImagePicker label="your image" name="image" />
+          {state.message && <p>{state.message}</p>}
           <p className={classes.actions}>
-            <MealsFormSubmit />{" "}
+            <MealsFormSubmit />{" "}  
           </p>
         </form>
       </main>

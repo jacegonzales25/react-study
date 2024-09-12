@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { saveMeal } from "./meals";
+import { revalidatePath } from "next/cache";
 
 export async function shareMeal(formData) {
   // Server action for submitting forms
@@ -25,12 +26,17 @@ export async function shareMeal(formData) {
     isInvalidText(meal.instruction) ||
     isInvalidText(meal.creator) ||
     isInvalidText(meal.creator_email) ||
-    !meal.creator_email.includes("@") || !meal.image || !meal.image.size === 0 
+    !meal.creator_email.includes("@") ||
+    !meal.image ||
+    !meal.image.size === 0
   ) {
-    throw new Error('Invalid input');
-
+    return {
+      message: "Invalid Input",
+    };
   }
 
   await saveMeal(meal);
+  // With layout, revalidates all
+  revalidatePath("/meals");
   redirect("/meals");
 }
