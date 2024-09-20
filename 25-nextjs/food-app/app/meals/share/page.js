@@ -50,7 +50,7 @@ export default function ShareMealPage() {
           <ImagePicker label="your image" name="image" />
           {state.message && <p>{state.message}</p>}
           <p className={classes.actions}>
-            <MealsFormSubmit />{" "}  
+            <MealsFormSubmit />{" "}
           </p>
         </form>
       </main>
