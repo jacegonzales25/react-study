@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-export default function SearchableList({ items }) {
+// Render Props & Dynamic Key handling
+export default function SearchableList({ items, itemsKeyFn, children }) {
   const [searchTerm, setSearchTerm] = useState();
 
   const searchResults = items.filter((item) =>
@@ -15,8 +16,8 @@ export default function SearchableList({ items }) {
     <div className="searchable-list">
       <input type="search" placeholder="Search" onChange={handleChange} />
       <ul>
-        {searchResults.map((item, index) => (
-          <li key={index}>{item.toSttring()}</li>
+        {searchResults.map((item) => (
+          <li key={itemsKeyFn(item)}>{children(item)}</li>
         ))}
       </ul>
     </div>

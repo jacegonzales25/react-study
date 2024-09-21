@@ -1,41 +1,42 @@
 import Accordion from "./components/accordion/Accordion";
 import SearchableList from "./components/searchableList/SearchableList";
-import savannaImg from './assets/african-savanna.jpg';
-import amazonImg from './assets/amazon-river.jpg';
-import caribbeanImg from './assets/caribbean-beach.jpg';
-import desertImg from './assets/desert-dunes.jpg';
-import forestImg from './assets/forest-waterfall.jpg';
+import savannaImg from "./assets/african-savanna.jpg";
+import amazonImg from "./assets/amazon-river.jpg";
+import caribbeanImg from "./assets/caribbean-beach.jpg";
+import desertImg from "./assets/desert-dunes.jpg";
+import forestImg from "./assets/forest-waterfall.jpg";
+import Place from "./Place";
 
 const PLACES = [
   {
-    id: 'african-savanna',
+    id: "african-savanna",
     image: savannaImg,
-    title: 'African Savanna',
-    description: 'Experience the beauty of nature.',
+    title: "African Savanna",
+    description: "Experience the beauty of nature.",
   },
   {
-    id: 'amazon-river',
+    id: "amazon-river",
     image: amazonImg,
-    title: 'Amazon River',
-    description: 'Get to know the largest river in the world.',
+    title: "Amazon River",
+    description: "Get to know the largest river in the world.",
   },
   {
-    id: 'caribbean-beach',
+    id: "caribbean-beach",
     image: caribbeanImg,
-    title: 'Caribbean Beach',
-    description: 'Enjoy the sun and the beach.',
+    title: "Caribbean Beach",
+    description: "Enjoy the sun and the beach.",
   },
   {
-    id: 'desert-dunes',
+    id: "desert-dunes",
     image: desertImg,
-    title: 'Desert Dunes',
-    description: 'Discover the desert life.',
+    title: "Desert Dunes",
+    description: "Discover the desert life.",
   },
   {
-    id: 'forest-waterfall',
+    id: "forest-waterfall",
     image: forestImg,
-    title: 'Forest Waterfall',
-    description: 'Listen to the sound of the water.',
+    title: "Forest Waterfall",
+    description: "Listen to the sound of the water.",
   },
 ];
 function App() {
@@ -75,7 +76,10 @@ function App() {
         </Accordion>
       </section>
       <section>
-        <SearchableList items={PLACES}/>
+        {/* Render Props */}
+        <SearchableList items={PLACES} itemsKeyFn={(item) => item.id}>
+          {(item) => <Place item={item} />}
+        </SearchableList>
       </section>
     </main>
   );
