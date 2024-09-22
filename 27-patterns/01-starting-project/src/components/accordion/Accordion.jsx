@@ -12,21 +12,19 @@ export function useAccordionContext() {
     throw new Error("useAccordionContext must be used within an Accordion");
   }
 
-  return ctx
+  return ctx;
 }
 
 export default function Accordion({ children, className }) {
   const [openItemId, setOpenItemId] = useState();
 
   function toggleItem(id) {
-    setOpenItemId(prevId => prevId === id ? null : id) 
+    setOpenItemId((prevId) => (prevId === id ? null : id));
   }
-
-
 
   const contextValue = {
     openItemId,
-    toggleItem
+    toggleItem,
   };
 
   return (
@@ -36,6 +34,6 @@ export default function Accordion({ children, className }) {
   );
 }
 
-Accordion.Item = AccordionItem
-Accordion.Title = AccordionTitle
-Accordion.Content = AccordionContent
+Accordion.Item = AccordionItem;
+Accordion.Title = AccordionTitle;
+Accordion.Content = AccordionContent;
